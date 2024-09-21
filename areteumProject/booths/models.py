@@ -44,3 +44,10 @@ class Food(models.Model):
 
     def __str__(self):
         return f'{self.menu_group.booth.name} > {self.menu_group.name} > {self.name}'
+    
+class SomTalk(models.Model):
+    time = models.DateTimeField(verbose_name='작성시간', auto_now_add=True)
+    comment = models.TextField(verbose_name='내용', max_length=44)
+    
+    def __str__(self):
+        return self.comment

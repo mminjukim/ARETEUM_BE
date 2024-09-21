@@ -34,3 +34,8 @@ class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
         fields = '__all__'
+        
+class SomTalkSerializer(serializers.ModelSerializer):    
+    class Meta:
+        model = SomTalk
+        fields = '__all__'
