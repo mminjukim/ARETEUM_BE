@@ -18,6 +18,11 @@ class Day2BoothSerializer(serializers.ModelSerializer):
         model = Booth
         fields = ['id', 'name', 'place', 'time_day2']
 
+class SearchBoothSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booth
+        fields = ['id', 'name', 'place', 'time_day1', 'time_day2']
+
 
 class MenuGroupSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,4 +33,9 @@ class MenuGroupSerializer(serializers.ModelSerializer):
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
+        fields = '__all__'
+        
+class SomTalkSerializer(serializers.ModelSerializer):    
+    class Meta:
+        model = SomTalk
         fields = '__all__'
