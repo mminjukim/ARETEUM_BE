@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework import status, generics, filters
 from rest_framework.response import Response
 from django.db.models import Q
-
+from rest_framework.viewsets import ModelViewSet 
 from .models import *
 from .serializers import *
 
@@ -86,3 +86,8 @@ class SearchBoothView(generics.ListAPIView):
     serializer_class = SearchBoothSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
+    
+# 솜톡
+class SomTalkViewSet(ModelViewSet):
+    queryset = SomTalk.objects.all()
+    serializer_class = SomTalkSerializer
