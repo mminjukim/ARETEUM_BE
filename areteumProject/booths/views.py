@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from rest_framework import status
+from rest_framework import status, generics, filters
 from rest_framework.response import Response
 from django.db.models import Q
 
@@ -52,3 +52,10 @@ class BoothDetailView(APIView):
         booth = Booth.objects.get(id=booth_id)
         booth = BoothSerializer(booth, context={'request':request})
         return Response(booth.data, status=status.HTTP_200_OK)
+    
+# 부스 검색   
+class SearchBoothView(generics.ListAPIView):
+    queryset = Booth.objects.all()
+    serializer_class = SearchBoothSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name']

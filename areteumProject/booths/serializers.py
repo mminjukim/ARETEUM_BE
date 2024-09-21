@@ -18,6 +18,11 @@ class Day2BoothSerializer(serializers.ModelSerializer):
         model = Booth
         fields = ['id', 'name', 'place', 'time_day2']
 
+class SearchBoothSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booth
+        fields = ['id', 'name', 'place', 'time_day1', 'time_day2']
+
 
 class MenuGroupSerializer(serializers.ModelSerializer):
     class Meta:
