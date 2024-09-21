@@ -50,8 +50,35 @@ class BoothDay2ListView(APIView):
 class BoothDetailView(APIView):
     def get(self, request, booth_id):
         booth = Booth.objects.get(id=booth_id)
-        booth = BoothSerializer(booth, context={'request':request})
-        return Response(booth.data, status=status.HTTP_200_OK)
+        booth_data = BoothSerializer(booth, context={'request':request}).data
+
+        menu_groups = MenuGroup.objects.filter(booth=booth_id)
+
+        food_list = []
+        for menu_group in menu_groups:
+            foods = Food.objects.filter(menu_group=menu_group)
+
+            food_data = [
+                    {
+                        "name": food.name,
+                        "price": food.price,
+                    }
+                    for food in foods
+                ]
+            food_list.append({
+                "menu_group": menu_group.name,
+                "menu_group_price": menu_group.price,
+                "food_list": food_data,
+            })
+
+        # 주점일 경우 메뉴 노출
+        if booth.category == '주점':
+            return Response({
+                'booth': booth_data, 
+                'menu': food_list,
+            }, status=status.HTTP_200_OK)
+        
+        return Response(booth_data, status=status.HTTP_200_OK)
     
 # 부스 검색   
 class SearchBoothView(generics.ListAPIView):
