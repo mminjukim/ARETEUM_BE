@@ -110,5 +110,7 @@ class SearchBoothView(generics.ListAPIView):
     
 # 솜톡
 class SomTalkViewSet(ModelViewSet):
-    queryset = SomTalk.objects.all().order_by('-time')[:20][::-1] #오름차순
     serializer_class = SomTalkSerializer
+    
+    def get_queryset(self):
+        return SomTalk.objects.all().order_by('-time')[:20][::-1] #오름차순
