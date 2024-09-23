@@ -590,7 +590,7 @@
     "fields": {
         "name": "굿스푼",
         "host": null,
-        "place": "민주광장, 구령대 옆",
+        "place": "민주광장/구령대",
         "date": "both",
         "time_day1": "12:00 - 22:00",
         "time_day2": "12:00 - 22:00",
@@ -605,7 +605,7 @@
     "fields": {
         "name": "스위트퍼플",
         "host": null,
-        "place": "민주광장, 구령대 옆",
+        "place": "민주광장/구령대",
         "date": "both",
         "time_day1": "12:00 - 22:00",
         "time_day2": "12:00 - 22:00",
@@ -620,7 +620,7 @@
     "fields": {
         "name": "용푸드카",
         "host": null,
-        "place": "민주광장, 구령대 옆",
+        "place": "민주광장/구령대",
         "date": "both",
         "time_day1": "12:00 - 22:00",
         "time_day2": "12:00 - 22:00",
@@ -635,7 +635,7 @@
     "fields": {
         "name": "스타츄러스",
         "host": null,
-        "place": "민주광장, 구령대 옆",
+        "place": "민주광장/구령대",
         "date": "both",
         "time_day1": "12:00 - 22:00",
         "time_day2": "12:00 - 22:00",
@@ -650,7 +650,7 @@
     "fields": {
         "name": "피자퀸",
         "host": null,
-        "place": "민주광장, 구령대 옆",
+        "place": "민주광장/구령대",
         "date": "both",
         "time_day1": "12:00 - 22:00",
         "time_day2": "12:00 - 22:00",
@@ -665,7 +665,7 @@
     "fields": {
         "name": "에페스케밥",
         "host": null,
-        "place": "민주광장, 구령대 옆",
+        "place": "민주광장/구령대",
         "date": "both",
         "time_day1": "12:00 - 22:00",
         "time_day2": "12:00 - 22:00",
