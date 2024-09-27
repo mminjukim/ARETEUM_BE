@@ -109,14 +109,11 @@ class SearchBoothView(generics.ListAPIView):
             'count': queryset.count(),
             'results': serializer.data
         }, status=status.HTTP_200_OK)
-    
 
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator 
 
-@method_decorator(csrf_exempt, name='dispatch')
+# 솜톡
 class SomTalkViewSet(ModelViewSet):
     serializer_class = SomTalkSerializer
 
     def get_queryset(self):
-        return SomTalk.objects.all().order_by('-time')[:20][::-1]  # 오름차순 정렬
+        return SomTalk.objects.all().order_by('-time')[:20][::-1]

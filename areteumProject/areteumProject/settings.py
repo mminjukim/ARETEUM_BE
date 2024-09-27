@@ -41,7 +41,7 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -68,10 +68,10 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', 
 	'django.middleware.common.CommonMiddleware', 
 
-    # 'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -79,10 +79,6 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True 
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React 개발 서버 URL
-    "http://127.0.0.1:3000",
-]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = [
 	'DELETE',
@@ -92,7 +88,7 @@ CORS_ALLOW_METHODS = [
 	'POST',
 	'PUT',
 ]
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
+
 REST_FRAMEWORK = {
     # CamelCaseJSON 관련 설정
 	'DEFAULT_RENDERER_CLASSES': (
@@ -130,12 +126,31 @@ WSGI_APPLICATION = 'areteumProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql', # engine: mysql
+        'NAME' : 'festival2024DB', # DB Name
+        'USER' : 'admin', # DB User
+        'PASSWORD' : 'dwufestival2024', # Password
+        'HOST': 'festival2024-db.cdoma84ak9oq.ap-northeast-2.rds.amazonaws.com',
+        'PORT': '3306', # 데이터베이스 포트
+        'OPTIONS':{
+            'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4',
+        }
     }
 }
+
 
 
 # Password validation
